@@ -38,15 +38,6 @@ def print_results_to_console(results):
     for result in results:
         print(result)
 
-@pytest.fixture(scope='module')
-def browser():
-    """Set up and tear down Playwright browser."""
-    logging.info("Starting the browser...")
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # Set headless=True if you don't need a UI
-        yield browser
-        browser.close()
-    logging.info("Browser closed.")
 
 def test_google_search(browser):
     """Perform a Google search and handle the results."""
